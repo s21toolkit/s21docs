@@ -2,36 +2,28 @@
 
 ## Index
 
+* [getUserRestrictionsInfo](#getUserRestrictionsInfo)
 * [userRoleLoaderGetRoles](#userRoleLoaderGetRoles)
 * [getUserFeatureFlags](#getUserFeatureFlags)
 * [getStudentIsDeadlinesEnabled](#getStudentIsDeadlinesEnabled)
 * [getTournamentNotificationResults](#getTournamentNotificationResults)
-* [getUserRestrictionsInfo](#getUserRestrictionsInfo)
 * [deadlinesGetStudentData](#deadlinesGetStudentData)
 * [deadlineReminderGetClosestDeadlinePopup](#deadlineReminderGetClosestDeadlinePopup)
 * [eventsWithoutFeedback](#eventsWithoutFeedback)
-* [getIsHonorRatingNeeded](#getIsHonorRatingNeeded)
 * [getSaleProgressPercentages](#getSaleProgressPercentages)
-* [getSearchHistory](#getSearchHistory)
 * [getUserNotificationsCount](#getUserNotificationsCount)
 * [dashboardHeaderGetInfo](#dashboardHeaderGetInfo)
 * [deadlinesGetDeadlines](#deadlinesGetDeadlines)
 * [getDashboardBuildings](#getDashboardBuildings)
-* [getUpcomingEvents](#getUpcomingEvents)
-* [getAgendaEvents](#getAgendaEvents)
 * [widgetAchievementsGetLastBadges](#widgetAchievementsGetLastBadges)
 * [getDashboardWorkstation](#getDashboardWorkstation)
-* [getStudentStageGroupS21](#getStudentStageGroupS21)
 * [getAsapWidgets](#getAsapWidgets)
-* [getAgendaP2P](#getAgendaP2P)
 * [getCurrentUser](#getCurrentUser)
-* [createFilledChecklist](#createFilledChecklist)
-* [saveFilledChecklist](#saveFilledChecklist)
-* [calendarGetEvents](#calendarGetEvents)
 * [calendarGetMyBookings](#calendarGetMyBookings)
 * [calendarGetMyReviews](#calendarGetMyReviews)
-* [getPenaltyReasons](#getPenaltyReasons)
 * [calendarDeleteEventSlot](#calendarDeleteEventSlot)
+* [getAgendaP2P](#getAgendaP2P)
+* [createFilledChecklist](#createFilledChecklist)
 * [getCredentialsByLogin](#getCredentialsByLogin)
 * [publicProfileGetPersonalInfo](#publicProfileGetPersonalInfo)
 * [getDismissInfoByStudentId](#getDismissInfoByStudentId)
@@ -44,6 +36,7 @@
 * [publicProfileGetStudentTraffic](#publicProfileGetStudentTraffic)
 * [getUserNotifications](#getUserNotifications)
 * [readUserNotifications](#readUserNotifications)
+* [saveFilledChecklist](#saveFilledChecklist)
 * [getInvitationsCount](#getInvitationsCount)
 * [getStudentCurrentProjects](#getStudentCurrentProjects)
 * [getAvailableCodeReviewProjects](#getAvailableCodeReviewProjects)
@@ -94,8 +87,111 @@
 * [sendInvitation](#sendInvitation)
 * [removeP2P](#removeP2P)
 * [calendarGetExams](#calendarGetExams)
+* [userGetTheme](#userGetTheme)
+* [getAllInCompletedStudentFeedbackPopup](#getAllInCompletedStudentFeedbackPopup)
+* [getIsHonorRatingNeeded](#getIsHonorRatingNeeded)
+* [getSearchHistory](#getSearchHistory)
+* [getUpcomingEvents](#getUpcomingEvents)
+* [getAgendaEvents](#getAgendaEvents)
+* [getStudentStageGroupS21](#getStudentStageGroupS21)
+* [calendarGetEvents](#calendarGetEvents)
+* [getPenaltyReasons](#getPenaltyReasons)
 
 ## Operations
+
+### getUserRestrictionsInfo
+
+<details>
+<summary> Query </summary>
+
+```
+query getUserRestrictionsInfo {
+  school21 {
+    getUserRestrictions {
+      restrictionId
+      restrictionType
+      userId
+      schoolId
+      isActive
+      createdTs
+      updatedTs
+      __typename
+    }
+    __typename
+  }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Variables"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "school21": {
+                    "$ref": "#/definitions/School21"
+                }
+            },
+            "required": [
+                "school21"
+            ],
+            "title": "Data"
+        },
+        "School21": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "getUserRestrictions": {
+                    "type": "array",
+                    "items": {}
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "getUserRestrictions"
+            ],
+            "title": "School21"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
 
 ### userRoleLoaderGetRoles
 
@@ -696,100 +792,6 @@ query getTournamentNotificationResults {
 
 [[Index](#index)]
 
-### getUserRestrictionsInfo
-
-<details>
-<summary> Query </summary>
-
-```
-query getUserRestrictionsInfo {
-  school21 {
-    getUserRestrictions {
-      restrictionId
-      restrictionType
-      userId
-      schoolId
-      isActive
-      createdTs
-      updatedTs
-      __typename
-    }
-    __typename
-  }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Variables </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Variables",
-    "definitions": {
-        "Variables": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Variables"
-        }
-    }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Data </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Data",
-    "definitions": {
-        "Data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "school21": {
-                    "$ref": "#/definitions/School21"
-                }
-            },
-            "required": [
-                "school21"
-            ],
-            "title": "Data"
-        },
-        "School21": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "getUserRestrictions": {
-                    "type": "array",
-                    "items": {}
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "getUserRestrictions"
-            ],
-            "title": "School21"
-        }
-    }
-}
-
-```
-
-</details>
-
-[[Index](#index)]
-
 ### deadlinesGetStudentData
 
 <details>
@@ -1347,90 +1349,6 @@ query eventsWithoutFeedback($from: DateTime!, $to: DateTime!) {
 
 [[Index](#index)]
 
-### getIsHonorRatingNeeded
-
-<details>
-<summary> Query </summary>
-
-```
-query getIsHonorRatingNeeded {
-  student {
-    isHonorRatingNeeded
-    __typename
-  }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Variables </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Variables",
-    "definitions": {
-        "Variables": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Variables"
-        }
-    }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Data </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Data",
-    "definitions": {
-        "Data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "student": {
-                    "$ref": "#/definitions/Student"
-                }
-            },
-            "required": [
-                "student"
-            ],
-            "title": "Data"
-        },
-        "Student": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "isHonorRatingNeeded": {
-                    "type": "boolean"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "isHonorRatingNeeded"
-            ],
-            "title": "Student"
-        }
-    }
-}
-
-```
-
-</details>
-
-[[Index](#index)]
-
 ### getSaleProgressPercentages
 
 <details>
@@ -1538,118 +1456,6 @@ fragment RpSaleInfo on RpSaleProgress {
                 "rpType"
             ],
             "title": "GetSaleProgressPercentage"
-        }
-    }
-}
-
-```
-
-</details>
-
-[[Index](#index)]
-
-### getSearchHistory
-
-<details>
-<summary> Query </summary>
-
-```
-query getSearchHistory {
-  school21 {
-    getSearchHistoryTooltips {
-      tooltipText
-      tooltipCategory
-      __typename
-    }
-    __typename
-  }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Variables </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Variables",
-    "definitions": {
-        "Variables": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Variables"
-        }
-    }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Data </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Data",
-    "definitions": {
-        "Data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "school21": {
-                    "$ref": "#/definitions/School21"
-                }
-            },
-            "required": [
-                "school21"
-            ],
-            "title": "Data"
-        },
-        "School21": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "getSearchHistoryTooltips": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/GetSearchHistoryTooltip"
-                    }
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "getSearchHistoryTooltips"
-            ],
-            "title": "School21"
-        },
-        "GetSearchHistoryTooltip": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "tooltipText": {
-                    "type": "string"
-                },
-                "tooltipCategory": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "tooltipCategory",
-                "tooltipText"
-            ],
-            "title": "GetSearchHistoryTooltip"
         }
     }
 }
@@ -2832,819 +2638,6 @@ query getDashboardBuildings {
 
 [[Index](#index)]
 
-### getUpcomingEvents
-
-<details>
-<summary> Query </summary>
-
-```
-query getUpcomingEvents($eventCodes: [String!]!, $registrationAccessStatusFilter: RegistartionStatusEnum, $page: PagingInput) {
-  student {
-    getUpcomingEventsForRegistration(
-      eventCodes: $eventCodes
-      registrationAccessStatusFilter: $registrationAccessStatusFilter
-      page: $page
-    ) {
-      ...UpcomingEvent
-      __typename
-    }
-    __typename
-  }
-}
-
-fragment UpcomingEvent on CalendarEvent {
-  id
-  start
-  end
-  bookings {
-    id
-    task {
-      id
-      goalName
-      __typename
-    }
-    __typename
-  }
-  eventSlots {
-    id
-    eventId
-    type
-    start
-    end
-    __typename
-  }
-  maxStudentCount
-  location
-  ipRange
-  eventType
-  eventCode
-  description
-  externalId
-  currentStudentsCount
-  exam {
-    examId
-    eventId
-    beginDate
-    endDate
-    location
-    ip
-    maxStudentCount
-    isVisible
-    name
-    goalId
-    isWaitListActive
-    isInWaitList
-    currentStudentsCount
-    createDate
-    updateDate
-    schoolId
-    stopRegisterDate
-    isRegistered
-    goalName
-    eventType
-    registrationAccessStatus
-    __typename
-  }
-  studentCodeReview {
-    studentGoalId
-    __typename
-  }
-  activity {
-    activityEventId
-    eventId
-    beginDate
-    endDate
-    location
-    description
-    maxStudentCount
-    isVisible
-    name
-    isWaitListActive
-    isInWaitList
-    currentStudentsCount
-    createDate
-    updateDate
-    schoolId
-    stopRegisterDate
-    isRegistered
-    activityType
-    eventType
-    isMandatory
-    status
-    organizers {
-      id
-      login
-      __typename
-    }
-    __typename
-  }
-  penalty {
-    ...Penalty
-    __typename
-  }
-  __typename
-}
-
-fragment Penalty on Penalty {
-  comment
-  id
-  duration
-  status
-  startTime
-  createTime
-  penaltySlot {
-    currentStudentsCount
-    description
-    duration
-    startTime
-    id
-    endTime
-    __typename
-  }
-  reasonId
-  __typename
-}
-
-```
-
-</details>
-
-<details>
-<summary> Variables </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Variables",
-    "definitions": {
-        "Variables": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "eventCodes": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "registrationAccessStatusFilter": {
-                    "type": "string"
-                },
-                "page": {
-                    "$ref": "#/definitions/Page"
-                }
-            },
-            "required": [
-                "eventCodes"
-            ],
-            "title": "Variables"
-        },
-        "Page": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "limit": {
-                    "type": "integer"
-                },
-                "offset": {
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "limit",
-                "offset"
-            ],
-            "title": "Page"
-        }
-    }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Data </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Data",
-    "definitions": {
-        "Data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "student": {
-                    "$ref": "#/definitions/Student"
-                }
-            },
-            "required": [
-                "student"
-            ],
-            "title": "Data"
-        },
-        "Student": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "getUpcomingEventsForRegistration": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/GetUpcomingEventsForRegistration"
-                    }
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "getUpcomingEventsForRegistration"
-            ],
-            "title": "Student"
-        },
-        "GetUpcomingEventsForRegistration": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "start": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "end": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "bookings": {
-                    "type": "array",
-                    "items": {}
-                },
-                "eventSlots": {
-                    "type": "array",
-                    "items": {}
-                },
-                "maxStudentCount": {
-                    "type": "integer"
-                },
-                "location": {
-                    "type": "string",
-                    "qt-uri-protocols": [
-                        "https"
-                    ]
-                },
-                "ipRange": {
-                    "anyOf": [
-                        {
-                            "type": "null"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ]
-                },
-                "eventType": {
-                    "type": "string"
-                },
-                "eventCode": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "externalId": {
-                    "type": "integer"
-                },
-                "currentStudentsCount": {
-                    "type": "integer"
-                },
-                "exam": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/Exam"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "studentCodeReview": {
-                    "type": "null"
-                },
-                "activity": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/Activity"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "penalty": {
-                    "type": "null"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "activity",
-                "bookings",
-                "currentStudentsCount",
-                "description",
-                "end",
-                "eventCode",
-                "eventSlots",
-                "eventType",
-                "exam",
-                "externalId",
-                "id",
-                "ipRange",
-                "location",
-                "maxStudentCount",
-                "penalty",
-                "start",
-                "studentCodeReview"
-            ],
-            "title": "GetUpcomingEventsForRegistration"
-        },
-        "Activity": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "activityEventId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "eventId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "beginDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "endDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "location": {
-                    "type": "string",
-                    "qt-uri-protocols": [
-                        "https"
-                    ]
-                },
-                "description": {
-                    "type": "string"
-                },
-                "maxStudentCount": {
-                    "type": "integer"
-                },
-                "isVisible": {
-                    "type": "boolean"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "isWaitListActive": {
-                    "type": "boolean"
-                },
-                "isInWaitList": {
-                    "type": "boolean"
-                },
-                "currentStudentsCount": {
-                    "type": "integer"
-                },
-                "createDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updateDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "schoolId": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "stopRegisterDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "isRegistered": {
-                    "type": "boolean"
-                },
-                "activityType": {
-                    "type": "string"
-                },
-                "eventType": {
-                    "type": "string"
-                },
-                "isMandatory": {
-                    "type": "boolean"
-                },
-                "status": {
-                    "anyOf": [
-                        {
-                            "type": "null"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ]
-                },
-                "organizers": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Organizer"
-                    }
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "activityEventId",
-                "activityType",
-                "beginDate",
-                "createDate",
-                "currentStudentsCount",
-                "description",
-                "endDate",
-                "eventId",
-                "eventType",
-                "isInWaitList",
-                "isMandatory",
-                "isRegistered",
-                "isVisible",
-                "isWaitListActive",
-                "location",
-                "maxStudentCount",
-                "name",
-                "organizers",
-                "schoolId",
-                "status",
-                "stopRegisterDate",
-                "updateDate"
-            ],
-            "title": "Activity"
-        },
-        "Organizer": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "login": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "id",
-                "login"
-            ],
-            "title": "Organizer"
-        },
-        "Exam": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "examId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "eventId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "beginDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "endDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "location": {
-                    "type": "string"
-                },
-                "ip": {
-                    "type": "null"
-                },
-                "maxStudentCount": {
-                    "type": "integer"
-                },
-                "isVisible": {
-                    "type": "boolean"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "goalId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "isWaitListActive": {
-                    "type": "boolean"
-                },
-                "isInWaitList": {
-                    "type": "boolean"
-                },
-                "currentStudentsCount": {
-                    "type": "integer"
-                },
-                "createDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updateDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "schoolId": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "stopRegisterDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "isRegistered": {
-                    "type": "boolean"
-                },
-                "goalName": {
-                    "type": "string"
-                },
-                "eventType": {
-                    "type": "string"
-                },
-                "registrationAccessStatus": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "beginDate",
-                "createDate",
-                "currentStudentsCount",
-                "endDate",
-                "eventId",
-                "eventType",
-                "examId",
-                "goalId",
-                "goalName",
-                "ip",
-                "isInWaitList",
-                "isRegistered",
-                "isVisible",
-                "isWaitListActive",
-                "location",
-                "maxStudentCount",
-                "name",
-                "registrationAccessStatus",
-                "schoolId",
-                "stopRegisterDate",
-                "updateDate"
-            ],
-            "title": "Exam"
-        }
-    }
-}
-
-```
-
-</details>
-
-[[Index](#index)]
-
-### getAgendaEvents
-
-<details>
-<summary> Query </summary>
-
-```
-query getAgendaEvents($from: DateTime!, $to: DateTime!, $limit: Int!) {
-  student {
-    getMyAgendaEvents(from: $from, to: $to, limit: $limit) {
-      agendaItemContext {
-        entityId
-        entityType
-        __typename
-      }
-      start
-      end
-      label
-      description
-      agendaEventType
-      additionalInfo {
-        key
-        value
-        __typename
-      }
-      __typename
-    }
-    __typename
-  }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Variables </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Variables",
-    "definitions": {
-        "Variables": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "from": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "to": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "limit": {
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "from",
-                "limit",
-                "to"
-            ],
-            "title": "Variables"
-        }
-    }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Data </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Data",
-    "definitions": {
-        "Data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "student": {
-                    "$ref": "#/definitions/Student"
-                }
-            },
-            "required": [
-                "student"
-            ],
-            "title": "Data"
-        },
-        "Student": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "getMyAgendaEvents": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/GetMyAgendaEvent"
-                    }
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "getMyAgendaEvents"
-            ],
-            "title": "Student"
-        },
-        "GetMyAgendaEvent": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "agendaItemContext": {
-                    "$ref": "#/definitions/AgendaItemContext"
-                },
-                "start": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "end": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "label": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "agendaEventType": {
-                    "type": "string"
-                },
-                "additionalInfo": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/AdditionalInfo"
-                    }
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "additionalInfo",
-                "agendaEventType",
-                "agendaItemContext",
-                "description",
-                "end",
-                "label",
-                "start"
-            ],
-            "title": "GetMyAgendaEvent"
-        },
-        "AdditionalInfo": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "key": {
-                    "type": "string"
-                },
-                "value": {
-                    "type": "string",
-                    "format": "boolean"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "key",
-                "value"
-            ],
-            "title": "AdditionalInfo"
-        },
-        "AgendaItemContext": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "entityId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "entityType": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "entityId",
-                "entityType"
-            ],
-            "title": "AgendaItemContext"
-        }
-    }
-}
-
-```
-
-</details>
-
-[[Index](#index)]
-
 ### widgetAchievementsGetLastBadges
 
 <details>
@@ -3952,129 +2945,6 @@ query getDashboardWorkstation($login: String!) {
 
 [[Index](#index)]
 
-### getStudentStageGroupS21
-
-<details>
-<summary> Query </summary>
-
-```
-query getStudentStageGroupS21($studentId: UUID!) {
-  student {
-    getStageGroupS21PublicProfile(studentId: $studentId) {
-      waveId
-      waveName
-      eduForm
-      __typename
-    }
-    __typename
-  }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Variables </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Variables",
-    "definitions": {
-        "Variables": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "studentId": {
-                    "type": "string",
-                    "format": "uuid"
-                }
-            },
-            "required": [
-                "studentId"
-            ],
-            "title": "Variables"
-        }
-    }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Data </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Data",
-    "definitions": {
-        "Data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "student": {
-                    "$ref": "#/definitions/Student"
-                }
-            },
-            "required": [
-                "student"
-            ],
-            "title": "Data"
-        },
-        "Student": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "getStageGroupS21PublicProfile": {
-                    "$ref": "#/definitions/GetStageGroupS21PublicProfile"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "getStageGroupS21PublicProfile"
-            ],
-            "title": "Student"
-        },
-        "GetStageGroupS21PublicProfile": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "waveId": {
-                    "type": "integer"
-                },
-                "waveName": {
-                    "type": "string"
-                },
-                "eduForm": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "eduForm",
-                "waveId",
-                "waveName"
-            ],
-            "title": "GetStageGroupS21PublicProfile"
-        }
-    }
-}
-
-```
-
-</details>
-
-[[Index](#index)]
-
 ### getAsapWidgets
 
 <details>
@@ -4249,465 +3119,6 @@ fragment AsapWidget on AsapWidgetInfo {
                 "text"
             ],
             "title": "WidgetList"
-        }
-    }
-}
-
-```
-
-</details>
-
-[[Index](#index)]
-
-### getAgendaP2P
-
-<details>
-<summary> Query </summary>
-
-```
-query getAgendaP2P($bookingId: ID!) {
-  student {
-    getEnrichedBooking(bookingId: $bookingId) {
-      id
-      eventSlot {
-        start
-        __typename
-      }
-      task {
-        goalId
-        goalName
-        assignmentType
-        studentTaskAdditionalAttributes {
-          cookiesCount
-          __typename
-        }
-        __typename
-      }
-      verifierUser {
-        id
-        login
-        avatarUrl
-        userExperience {
-          level {
-            range {
-              levelCode
-              __typename
-            }
-            __typename
-          }
-          __typename
-        }
-        __typename
-      }
-      verifiableStudent {
-        user {
-          id
-          login
-          avatarUrl
-          userExperience {
-            level {
-              range {
-                levelCode
-                __typename
-              }
-              __typename
-            }
-            __typename
-          }
-          __typename
-        }
-        __typename
-      }
-      answerId
-      team {
-        teamName
-        teamLead {
-          id
-          avatarUrl
-          login
-          userExperience {
-            level {
-              range {
-                levelCode
-                __typename
-              }
-              __typename
-            }
-            __typename
-          }
-          __typename
-        }
-        members {
-          id
-          avatarUrl
-          login
-          userExperience {
-            level {
-              range {
-                levelCode
-                __typename
-              }
-              __typename
-            }
-            __typename
-          }
-          __typename
-        }
-        __typename
-      }
-      bookingStatus
-      isOnline
-      vcLinkUrl
-      __typename
-    }
-    __typename
-  }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Variables </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Variables",
-    "definitions": {
-        "Variables": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "bookingId": {
-                    "type": "string",
-                    "format": "integer"
-                }
-            },
-            "required": [
-                "bookingId"
-            ],
-            "title": "Variables"
-        }
-    }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Data </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Data",
-    "definitions": {
-        "Data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "student": {
-                    "$ref": "#/definitions/Student"
-                }
-            },
-            "required": [
-                "student"
-            ],
-            "title": "Data"
-        },
-        "Student": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "getEnrichedBooking": {
-                    "$ref": "#/definitions/GetEnrichedBooking"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "getEnrichedBooking"
-            ],
-            "title": "Student"
-        },
-        "GetEnrichedBooking": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "eventSlot": {
-                    "$ref": "#/definitions/EventSlot"
-                },
-                "task": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/Task"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "verifierUser": {
-                    "$ref": "#/definitions/VerifierUser"
-                },
-                "verifiableStudent": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/VerifiableStudent"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "answerId": {
-                    "anyOf": [
-                        {
-                            "type": "string",
-                            "format": "integer"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "team": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/Team"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "bookingStatus": {
-                    "type": "string"
-                },
-                "isOnline": {
-                    "type": "boolean"
-                },
-                "vcLinkUrl": {
-                    "type": "null"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "answerId",
-                "bookingStatus",
-                "eventSlot",
-                "id",
-                "isOnline",
-                "task",
-                "team",
-                "vcLinkUrl",
-                "verifiableStudent",
-                "verifierUser"
-            ],
-            "title": "GetEnrichedBooking"
-        },
-        "EventSlot": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "start": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "start"
-            ],
-            "title": "EventSlot"
-        },
-        "Task": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "goalId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "goalName": {
-                    "type": "string"
-                },
-                "assignmentType": {
-                    "type": "string"
-                },
-                "studentTaskAdditionalAttributes": {
-                    "$ref": "#/definitions/StudentTaskAdditionalAttributes"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "assignmentType",
-                "goalId",
-                "goalName",
-                "studentTaskAdditionalAttributes"
-            ],
-            "title": "Task"
-        },
-        "StudentTaskAdditionalAttributes": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "cookiesCount": {
-                    "type": "integer"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "cookiesCount"
-            ],
-            "title": "StudentTaskAdditionalAttributes"
-        },
-        "Team": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "teamName": {
-                    "type": "string"
-                },
-                "teamLead": {
-                    "$ref": "#/definitions/VerifierUser"
-                },
-                "members": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/VerifierUser"
-                    }
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "members",
-                "teamLead",
-                "teamName"
-            ],
-            "title": "Team"
-        },
-        "VerifierUser": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "login": {
-                    "type": "string"
-                },
-                "avatarUrl": {
-                    "type": "string"
-                },
-                "userExperience": {
-                    "$ref": "#/definitions/UserExperience"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "avatarUrl",
-                "id",
-                "login",
-                "userExperience"
-            ],
-            "title": "VerifierUser"
-        },
-        "UserExperience": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "level": {
-                    "$ref": "#/definitions/Level"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "level"
-            ],
-            "title": "UserExperience"
-        },
-        "Level": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "range": {
-                    "$ref": "#/definitions/Range"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "range"
-            ],
-            "title": "Level"
-        },
-        "Range": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "levelCode": {
-                    "type": "integer"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "levelCode"
-            ],
-            "title": "Range"
-        },
-        "VerifiableStudent": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "user": {
-                    "$ref": "#/definitions/VerifierUser"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "user"
-            ],
-            "title": "VerifiableStudent"
         }
     }
 }
@@ -4971,1739 +3382,6 @@ fragment CurrentUserExperience on UserExperience {
                 "middleName"
             ],
             "title": "GetCurrentUser"
-        }
-    }
-}
-
-```
-
-</details>
-
-[[Index](#index)]
-
-### createFilledChecklist
-
-<details>
-<summary> Query </summary>
-
-```
-mutation createFilledChecklist($studentAnswerId: ID!) {
-  student {
-    createFilledChecklist(studentAnswerId: $studentAnswerId) {
-      id
-      gitlabStudentProjectUrl {
-        sshLink
-        httpsLink
-        __typename
-      }
-      checklist {
-        ...FormChecklist
-        __typename
-      }
-      moduleInfoP2P {
-        ...FilledChecklistModuleInfo
-        __typename
-      }
-      progressCheckInfo {
-        reviewUserCount
-        reviewUserCountExecuted
-        __typename
-      }
-      verifiableUsers {
-        teamWithMembers {
-          team {
-            id
-            name
-            __typename
-          }
-          members {
-            ...TeamMember
-            __typename
-          }
-          __typename
-        }
-        user {
-          ...TeamMemberUser
-          __typename
-        }
-        __typename
-      }
-      video {
-        filledChecklistId
-        link
-        status
-        statusDetails
-        __typename
-      }
-      __typename
-    }
-    __typename
-  }
-}
-
-fragment FormChecklist on Checklist {
-  language
-  introduction
-  guidelines
-  sectionList {
-    ...FormChecklistSection
-    __typename
-  }
-  quickActions
-  __typename
-}
-
-fragment FormChecklistSection on ChecklistSection {
-  checklistSectionId
-  name
-  description
-  kindQuestionId
-  questionList {
-    ...FormChecklistQuestion
-    __typename
-  }
-  __typename
-}
-
-fragment FormChecklistQuestion on SectionQuestion {
-  sectionQuestionId
-  name
-  description
-  taskAssessmentScale {
-    criterionScaleId
-    type
-    description
-    scaleWeights {
-      key
-      value
-      __typename
-    }
-    __typename
-  }
-  __typename
-}
-
-fragment FilledChecklistModuleInfo on ModuleInfoP2P {
-  moduleName
-  executionType
-  periodOfVerification
-  __typename
-}
-
-fragment TeamMember on TeamMember {
-  user {
-    ...TeamMemberUser
-    __typename
-  }
-  role
-  __typename
-}
-
-fragment TeamMemberUser on User {
-  id
-  avatarUrl
-  login
-  userExperience {
-    level {
-      id
-      levelCode
-      range {
-        levelCode
-        __typename
-      }
-      __typename
-    }
-    cookiesCount
-    codeReviewPoints
-    __typename
-  }
-  __typename
-}
-
-```
-
-</details>
-
-<details>
-<summary> Variables </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Variables",
-    "definitions": {
-        "Variables": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "studentAnswerId": {
-                    "type": "string",
-                    "format": "integer"
-                }
-            },
-            "required": [
-                "studentAnswerId"
-            ],
-            "title": "Variables"
-        }
-    }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Data </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Data",
-    "definitions": {
-        "Data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "student": {
-                    "$ref": "#/definitions/Student"
-                }
-            },
-            "required": [
-                "student"
-            ],
-            "title": "Data"
-        },
-        "Student": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "createFilledChecklist": {
-                    "$ref": "#/definitions/CreateFilledChecklist"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "createFilledChecklist"
-            ],
-            "title": "Student"
-        },
-        "CreateFilledChecklist": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "gitlabStudentProjectUrl": {
-                    "$ref": "#/definitions/GitlabStudentProjectURL"
-                },
-                "checklist": {
-                    "$ref": "#/definitions/Checklist"
-                },
-                "moduleInfoP2P": {
-                    "$ref": "#/definitions/ModuleInfoP2P"
-                },
-                "progressCheckInfo": {
-                    "$ref": "#/definitions/ProgressCheckInfo"
-                },
-                "verifiableUsers": {
-                    "$ref": "#/definitions/VerifiableUsers"
-                },
-                "video": {
-                    "type": "null"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "checklist",
-                "gitlabStudentProjectUrl",
-                "id",
-                "moduleInfoP2P",
-                "progressCheckInfo",
-                "verifiableUsers",
-                "video"
-            ],
-            "title": "CreateFilledChecklist"
-        },
-        "Checklist": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "language": {
-                    "type": "string"
-                },
-                "introduction": {
-                    "type": "string"
-                },
-                "guidelines": {
-                    "type": "string"
-                },
-                "sectionList": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/SectionList"
-                    }
-                },
-                "quickActions": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "guidelines",
-                "introduction",
-                "language",
-                "quickActions",
-                "sectionList"
-            ],
-            "title": "Checklist"
-        },
-        "SectionList": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "checklistSectionId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "kindQuestionId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "questionList": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/QuestionList"
-                    }
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "checklistSectionId",
-                "description",
-                "kindQuestionId",
-                "name",
-                "questionList"
-            ],
-            "title": "SectionList"
-        },
-        "QuestionList": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "sectionQuestionId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "taskAssessmentScale": {
-                    "$ref": "#/definitions/TaskAssessmentScale"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "description",
-                "name",
-                "sectionQuestionId",
-                "taskAssessmentScale"
-            ],
-            "title": "QuestionList"
-        },
-        "TaskAssessmentScale": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "criterionScaleId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "type": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "scaleWeights": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/ScaleWeight"
-                    }
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "criterionScaleId",
-                "description",
-                "scaleWeights",
-                "type"
-            ],
-            "title": "TaskAssessmentScale"
-        },
-        "ScaleWeight": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "key": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "value": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "key",
-                "value"
-            ],
-            "title": "ScaleWeight"
-        },
-        "GitlabStudentProjectURL": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "sshLink": {
-                    "type": "string"
-                },
-                "httpsLink": {
-                    "type": "string",
-                    "format": "uri",
-                    "qt-uri-protocols": [
-                        "https"
-                    ],
-                    "qt-uri-extensions": [
-                        ".git"
-                    ]
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "httpsLink",
-                "sshLink"
-            ],
-            "title": "GitlabStudentProjectURL"
-        },
-        "ModuleInfoP2P": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "moduleName": {
-                    "type": "string"
-                },
-                "executionType": {
-                    "type": "string"
-                },
-                "periodOfVerification": {
-                    "type": "integer"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "executionType",
-                "moduleName",
-                "periodOfVerification"
-            ],
-            "title": "ModuleInfoP2P"
-        },
-        "ProgressCheckInfo": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "reviewUserCount": {
-                    "type": "integer"
-                },
-                "reviewUserCountExecuted": {
-                    "type": "integer"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "reviewUserCount",
-                "reviewUserCountExecuted"
-            ],
-            "title": "ProgressCheckInfo"
-        },
-        "VerifiableUsers": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "teamWithMembers": {
-                    "$ref": "#/definitions/TeamWithMembers"
-                },
-                "user": {
-                    "type": "null"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "teamWithMembers",
-                "user"
-            ],
-            "title": "VerifiableUsers"
-        },
-        "TeamWithMembers": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "team": {
-                    "$ref": "#/definitions/Team"
-                },
-                "members": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Member"
-                    }
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "members",
-                "team"
-            ],
-            "title": "TeamWithMembers"
-        },
-        "Member": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "user": {
-                    "$ref": "#/definitions/User"
-                },
-                "role": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "role",
-                "user"
-            ],
-            "title": "Member"
-        },
-        "User": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "avatarUrl": {
-                    "type": "string"
-                },
-                "login": {
-                    "type": "string"
-                },
-                "userExperience": {
-                    "$ref": "#/definitions/UserExperience"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "avatarUrl",
-                "id",
-                "login",
-                "userExperience"
-            ],
-            "title": "User"
-        },
-        "UserExperience": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "level": {
-                    "$ref": "#/definitions/Level"
-                },
-                "cookiesCount": {
-                    "type": "integer"
-                },
-                "codeReviewPoints": {
-                    "type": "integer"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "codeReviewPoints",
-                "cookiesCount",
-                "level"
-            ],
-            "title": "UserExperience"
-        },
-        "Level": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "levelCode": {
-                    "type": "integer"
-                },
-                "range": {
-                    "$ref": "#/definitions/Range"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "id",
-                "levelCode",
-                "range"
-            ],
-            "title": "Level"
-        },
-        "Range": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "levelCode": {
-                    "type": "integer"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "levelCode"
-            ],
-            "title": "Range"
-        },
-        "Team": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "id",
-                "name"
-            ],
-            "title": "Team"
-        }
-    }
-}
-
-```
-
-</details>
-
-[[Index](#index)]
-
-### saveFilledChecklist
-
-<details>
-<summary> Query </summary>
-
-```
-mutation saveFilledChecklist($filledChecklistInput: ChecklistFilledInput!) {
-  student {
-    completeP2pCheck(checklistFilledInput: $filledChecklistInput)
-    __typename
-  }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Variables </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Variables",
-    "definitions": {
-        "Variables": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "filledChecklistInput": {
-                    "$ref": "#/definitions/FilledChecklistInput"
-                }
-            },
-            "required": [
-                "filledChecklistInput"
-            ],
-            "title": "Variables"
-        },
-        "FilledChecklistInput": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "quickAction": {
-                    "type": "null"
-                },
-                "comment": {
-                    "type": "string"
-                },
-                "scoreQuestions": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/ScoreQuestion"
-                    }
-                },
-                "filledChecklistId": {
-                    "type": "string",
-                    "format": "integer"
-                }
-            },
-            "required": [
-                "comment",
-                "filledChecklistId",
-                "quickAction",
-                "scoreQuestions"
-            ],
-            "title": "FilledChecklistInput"
-        },
-        "ScoreQuestion": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "sectionQuestionId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "ratingWeightId": {
-                    "type": "string",
-                    "format": "integer"
-                }
-            },
-            "required": [
-                "ratingWeightId",
-                "sectionQuestionId"
-            ],
-            "title": "ScoreQuestion"
-        }
-    }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Data </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Data",
-    "definitions": {
-        "Data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "student": {
-                    "$ref": "#/definitions/Student"
-                }
-            },
-            "required": [
-                "student"
-            ],
-            "title": "Data"
-        },
-        "Student": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "completeP2pCheck": {
-                    "type": "integer"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "completeP2pCheck"
-            ],
-            "title": "Student"
-        }
-    }
-}
-
-```
-
-</details>
-
-[[Index](#index)]
-
-### calendarGetEvents
-
-<details>
-<summary> Query </summary>
-
-```
-query calendarGetEvents($from: DateTime!, $to: DateTime!) {
-  student {
-    getMyCalendarEvents(from: $from, to: $to) {
-      ...CalendarEvent
-      __typename
-    }
-    __typename
-  }
-}
-
-fragment CalendarEvent on CalendarEvent {
-  id
-  start
-  end
-  description
-  eventType
-  eventCode
-  eventSlots {
-    id
-    type
-    start
-    end
-    __typename
-  }
-  bookings {
-    ...CalendarReviewBooking
-    __typename
-  }
-  exam {
-    ...CalendarEventExam
-    __typename
-  }
-  studentCodeReview {
-    studentGoalId
-    __typename
-  }
-  activity {
-    ...CalendarEventActivity
-    studentFeedback {
-      id
-      rating
-      comment
-      __typename
-    }
-    status
-    activityType
-    isMandatory
-    isWaitListActive
-    isVisible
-    comments {
-      type
-      createTs
-      comment
-      __typename
-    }
-    organizers {
-      id
-      login
-      __typename
-    }
-    __typename
-  }
-  goals {
-    goalId
-    goalName
-    __typename
-  }
-  penalty {
-    ...Penalty
-    __typename
-  }
-  __typename
-}
-
-fragment CalendarReviewBooking on CalendarBooking {
-  id
-  answerId
-  eventSlotId
-  task {
-    id
-    goalId
-    goalName
-    studentTaskAdditionalAttributes {
-      cookiesCount
-      __typename
-    }
-    assignmentType
-    __typename
-  }
-  eventSlot {
-    id
-    start
-    end
-    event {
-      eventUserRole
-      __typename
-    }
-    __typename
-  }
-  verifierUser {
-    ...CalendarReviewUser
-    __typename
-  }
-  verifiableStudent {
-    id
-    user {
-      ...CalendarReviewUser
-      __typename
-    }
-    __typename
-  }
-  bookingStatus
-  team {
-    ...ProjectTeamMembers
-    __typename
-  }
-  isOnline
-  vcLinkUrl
-  __typename
-}
-
-fragment CalendarReviewUser on User {
-  id
-  login
-  __typename
-}
-
-fragment ProjectTeamMembers on ProjectTeamMembers {
-  id
-  teamLead {
-    ...ProjectTeamMember
-    __typename
-  }
-  members {
-    ...ProjectTeamMember
-    __typename
-  }
-  invitedUsers {
-    ...ProjectTeamMember
-    __typename
-  }
-  teamName
-  teamStatus
-  minTeamMemberCount
-  maxTeamMemberCount
-  __typename
-}
-
-fragment ProjectTeamMember on User {
-  id
-  avatarUrl
-  login
-  userExperience {
-    level {
-      id
-      range {
-        levelCode
-        __typename
-      }
-      __typename
-    }
-    cookiesCount
-    codeReviewPoints
-    __typename
-  }
-  __typename
-}
-
-fragment CalendarEventExam on Exam {
-  examId
-  eventId
-  beginDate
-  endDate
-  name
-  location
-  currentStudentsCount
-  maxStudentCount
-  updateDate
-  goalId
-  goalName
-  isWaitListActive
-  isInWaitList
-  stopRegisterDate
-  __typename
-}
-
-fragment CalendarEventActivity on ActivityEvent {
-  activityEventId
-  eventId
-  name
-  beginDate
-  endDate
-  isRegistered
-  description
-  currentStudentsCount
-  maxStudentCount
-  location
-  updateDate
-  isWaitListActive
-  isInWaitList
-  stopRegisterDate
-  __typename
-}
-
-fragment Penalty on Penalty {
-  comment
-  id
-  duration
-  status
-  startTime
-  createTime
-  penaltySlot {
-    currentStudentsCount
-    description
-    duration
-    startTime
-    id
-    endTime
-    __typename
-  }
-  reasonId
-  __typename
-}
-
-```
-
-</details>
-
-<details>
-<summary> Variables </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Variables",
-    "definitions": {
-        "Variables": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "from": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "to": {
-                    "type": "string",
-                    "format": "date-time"
-                }
-            },
-            "required": [
-                "from",
-                "to"
-            ],
-            "title": "Variables"
-        }
-    }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Data </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Data",
-    "definitions": {
-        "Data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "student": {
-                    "$ref": "#/definitions/Student"
-                }
-            },
-            "required": [
-                "student"
-            ],
-            "title": "Data"
-        },
-        "Student": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "getMyCalendarEvents": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/GetMyCalendarEvent"
-                    }
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "getMyCalendarEvents"
-            ],
-            "title": "Student"
-        },
-        "GetMyCalendarEvent": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "start": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "end": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "eventType": {
-                    "type": "string"
-                },
-                "eventCode": {
-                    "type": "string"
-                },
-                "eventSlots": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/EventSlot"
-                    }
-                },
-                "bookings": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Booking"
-                    }
-                },
-                "exam": {
-                    "type": "null"
-                },
-                "studentCodeReview": {
-                    "type": "null"
-                },
-                "activity": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/Activity"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "goals": {
-                    "type": "array",
-                    "items": {}
-                },
-                "penalty": {
-                    "type": "null"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "activity",
-                "bookings",
-                "description",
-                "end",
-                "eventCode",
-                "eventSlots",
-                "eventType",
-                "exam",
-                "goals",
-                "id",
-                "penalty",
-                "start",
-                "studentCodeReview"
-            ],
-            "title": "GetMyCalendarEvent"
-        },
-        "Activity": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "activityEventId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "eventId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "beginDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "endDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "isRegistered": {
-                    "type": "boolean"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "currentStudentsCount": {
-                    "type": "integer"
-                },
-                "maxStudentCount": {
-                    "type": "integer"
-                },
-                "location": {
-                    "type": "string"
-                },
-                "updateDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "isWaitListActive": {
-                    "type": "boolean"
-                },
-                "isInWaitList": {
-                    "type": "boolean"
-                },
-                "stopRegisterDate": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "__typename": {
-                    "type": "string"
-                },
-                "studentFeedback": {
-                    "$ref": "#/definitions/StudentFeedback"
-                },
-                "status": {
-                    "type": "string"
-                },
-                "activityType": {
-                    "type": "string"
-                },
-                "isMandatory": {
-                    "type": "boolean"
-                },
-                "isVisible": {
-                    "type": "boolean"
-                },
-                "comments": {
-                    "type": "array",
-                    "items": {}
-                },
-                "organizers": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/VerifierUser"
-                    }
-                }
-            },
-            "required": [
-                "__typename",
-                "activityEventId",
-                "activityType",
-                "beginDate",
-                "comments",
-                "currentStudentsCount",
-                "description",
-                "endDate",
-                "eventId",
-                "isInWaitList",
-                "isMandatory",
-                "isRegistered",
-                "isVisible",
-                "isWaitListActive",
-                "location",
-                "maxStudentCount",
-                "name",
-                "organizers",
-                "status",
-                "stopRegisterDate",
-                "studentFeedback",
-                "updateDate"
-            ],
-            "title": "Activity"
-        },
-        "VerifierUser": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "login": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "id",
-                "login"
-            ],
-            "title": "VerifierUser"
-        },
-        "StudentFeedback": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "rating": {
-                    "type": "integer"
-                },
-                "comment": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "comment",
-                "id",
-                "rating"
-            ],
-            "title": "StudentFeedback"
-        },
-        "Booking": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "answerId": {
-                    "anyOf": [
-                        {
-                            "type": "string",
-                            "format": "integer"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "eventSlotId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "task": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/Task"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "eventSlot": {
-                    "$ref": "#/definitions/EventSlot"
-                },
-                "verifierUser": {
-                    "$ref": "#/definitions/VerifierUser"
-                },
-                "verifiableStudent": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/VerifiableStudent"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "bookingStatus": {
-                    "type": "string"
-                },
-                "team": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/Team"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "isOnline": {
-                    "type": "boolean"
-                },
-                "vcLinkUrl": {
-                    "type": "null"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "answerId",
-                "bookingStatus",
-                "eventSlot",
-                "eventSlotId",
-                "id",
-                "isOnline",
-                "task",
-                "team",
-                "vcLinkUrl",
-                "verifiableStudent",
-                "verifierUser"
-            ],
-            "title": "Booking"
-        },
-        "Event": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "eventUserRole": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "eventUserRole"
-            ],
-            "title": "Event"
-        },
-        "Task": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "goalId": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "goalName": {
-                    "type": "string"
-                },
-                "studentTaskAdditionalAttributes": {
-                    "$ref": "#/definitions/StudentTaskAdditionalAttributes"
-                },
-                "assignmentType": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "assignmentType",
-                "goalId",
-                "goalName",
-                "id",
-                "studentTaskAdditionalAttributes"
-            ],
-            "title": "Task"
-        },
-        "StudentTaskAdditionalAttributes": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "cookiesCount": {
-                    "type": "integer"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "cookiesCount"
-            ],
-            "title": "StudentTaskAdditionalAttributes"
-        },
-        "Team": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "teamLead": {
-                    "$ref": "#/definitions/TeamLead"
-                },
-                "members": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/TeamLead"
-                    }
-                },
-                "invitedUsers": {
-                    "type": "array",
-                    "items": {}
-                },
-                "teamName": {
-                    "type": "string"
-                },
-                "teamStatus": {
-                    "type": "string"
-                },
-                "minTeamMemberCount": {
-                    "type": "integer"
-                },
-                "maxTeamMemberCount": {
-                    "type": "integer"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "id",
-                "invitedUsers",
-                "maxTeamMemberCount",
-                "members",
-                "minTeamMemberCount",
-                "teamLead",
-                "teamName",
-                "teamStatus"
-            ],
-            "title": "Team"
-        },
-        "TeamLead": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "avatarUrl": {
-                    "type": "string"
-                },
-                "login": {
-                    "type": "string"
-                },
-                "userExperience": {
-                    "$ref": "#/definitions/UserExperience"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "avatarUrl",
-                "id",
-                "login",
-                "userExperience"
-            ],
-            "title": "TeamLead"
-        },
-        "UserExperience": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "level": {
-                    "$ref": "#/definitions/Level"
-                },
-                "cookiesCount": {
-                    "type": "integer"
-                },
-                "codeReviewPoints": {
-                    "type": "integer"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "codeReviewPoints",
-                "cookiesCount",
-                "level"
-            ],
-            "title": "UserExperience"
-        },
-        "Level": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "range": {
-                    "$ref": "#/definitions/Range"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "id",
-                "range"
-            ],
-            "title": "Level"
-        },
-        "Range": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "levelCode": {
-                    "type": "integer"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "levelCode"
-            ],
-            "title": "Range"
-        },
-        "VerifiableStudent": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "uuid"
-                },
-                "user": {
-                    "$ref": "#/definitions/VerifierUser"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "id",
-                "user"
-            ],
-            "title": "VerifiableStudent"
-        },
-        "EventSlot": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "start": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "end": {
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "event": {
-                    "$ref": "#/definitions/Event"
-                },
-                "__typename": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "end",
-                "id",
-                "start"
-            ],
-            "title": "EventSlot"
         }
     }
 }
@@ -7696,119 +4374,6 @@ fragment ProjectTeamMember on User {
 
 [[Index](#index)]
 
-### getPenaltyReasons
-
-<details>
-<summary> Query </summary>
-
-```
-query getPenaltyReasons {
-  school21 {
-    getPenaltyReasons {
-      id
-      name
-      __typename
-    }
-    __typename
-  }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Variables </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Variables",
-    "definitions": {
-        "Variables": {
-            "type": "object",
-            "additionalProperties": false,
-            "title": "Variables"
-        }
-    }
-}
-
-```
-
-</details>
-
-<details>
-<summary> Data </summary>
-
-```json
-{
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$ref": "#/definitions/Data",
-    "definitions": {
-        "Data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "school21": {
-                    "$ref": "#/definitions/School21"
-                }
-            },
-            "required": [
-                "school21"
-            ],
-            "title": "Data"
-        },
-        "School21": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "getPenaltyReasons": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/GetPenaltyReason"
-                    }
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "getPenaltyReasons"
-            ],
-            "title": "School21"
-        },
-        "GetPenaltyReason": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "format": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "__typename": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "__typename",
-                "id",
-                "name"
-            ],
-            "title": "GetPenaltyReason"
-        }
-    }
-}
-
-```
-
-</details>
-
-[[Index](#index)]
-
 ### calendarDeleteEventSlot
 
 <details>
@@ -7892,6 +4457,1161 @@ mutation calendarDeleteEventSlot($eventSlotId: ID!) {
                 "deleteEventSlot"
             ],
             "title": "Student"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
+
+### getAgendaP2P
+
+<details>
+<summary> Query </summary>
+
+```
+query getAgendaP2P($bookingId: ID!) {
+  student {
+    getEnrichedBooking(bookingId: $bookingId) {
+      id
+      eventSlot {
+        start
+        __typename
+      }
+      task {
+        goalId
+        goalName
+        assignmentType
+        studentTaskAdditionalAttributes {
+          cookiesCount
+          __typename
+        }
+        __typename
+      }
+      verifierUser {
+        id
+        login
+        avatarUrl
+        userExperience {
+          level {
+            range {
+              levelCode
+              __typename
+            }
+            __typename
+          }
+          __typename
+        }
+        __typename
+      }
+      verifiableStudent {
+        user {
+          id
+          login
+          avatarUrl
+          userExperience {
+            level {
+              range {
+                levelCode
+                __typename
+              }
+              __typename
+            }
+            __typename
+          }
+          __typename
+        }
+        __typename
+      }
+      answerId
+      team {
+        teamName
+        teamLead {
+          id
+          avatarUrl
+          login
+          userExperience {
+            level {
+              range {
+                levelCode
+                __typename
+              }
+              __typename
+            }
+            __typename
+          }
+          __typename
+        }
+        members {
+          id
+          avatarUrl
+          login
+          userExperience {
+            level {
+              range {
+                levelCode
+                __typename
+              }
+              __typename
+            }
+            __typename
+          }
+          __typename
+        }
+        __typename
+      }
+      bookingStatus
+      isOnline
+      vcLinkUrl
+      __typename
+    }
+    __typename
+  }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "bookingId": {
+                    "type": "string",
+                    "format": "integer"
+                }
+            },
+            "required": [
+                "bookingId"
+            ],
+            "title": "Variables"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "student": {
+                    "$ref": "#/definitions/Student"
+                }
+            },
+            "required": [
+                "student"
+            ],
+            "title": "Data"
+        },
+        "Student": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "getEnrichedBooking": {
+                    "$ref": "#/definitions/GetEnrichedBooking"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "getEnrichedBooking"
+            ],
+            "title": "Student"
+        },
+        "GetEnrichedBooking": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "eventSlot": {
+                    "$ref": "#/definitions/EventSlot"
+                },
+                "task": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Task"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "verifierUser": {
+                    "$ref": "#/definitions/VerifierUser"
+                },
+                "verifiableStudent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/VerifiableStudent"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "answerId": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "team": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Team"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "bookingStatus": {
+                    "type": "string"
+                },
+                "isOnline": {
+                    "type": "boolean"
+                },
+                "vcLinkUrl": {
+                    "type": "null"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "answerId",
+                "bookingStatus",
+                "eventSlot",
+                "id",
+                "isOnline",
+                "task",
+                "team",
+                "vcLinkUrl",
+                "verifiableStudent",
+                "verifierUser"
+            ],
+            "title": "GetEnrichedBooking"
+        },
+        "EventSlot": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "start": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "start"
+            ],
+            "title": "EventSlot"
+        },
+        "Task": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "goalId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "goalName": {
+                    "type": "string"
+                },
+                "assignmentType": {
+                    "type": "string"
+                },
+                "studentTaskAdditionalAttributes": {
+                    "$ref": "#/definitions/StudentTaskAdditionalAttributes"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "assignmentType",
+                "goalId",
+                "goalName",
+                "studentTaskAdditionalAttributes"
+            ],
+            "title": "Task"
+        },
+        "StudentTaskAdditionalAttributes": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "cookiesCount": {
+                    "type": "integer"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "cookiesCount"
+            ],
+            "title": "StudentTaskAdditionalAttributes"
+        },
+        "Team": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "teamName": {
+                    "type": "string"
+                },
+                "teamLead": {
+                    "$ref": "#/definitions/VerifierUser"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VerifierUser"
+                    }
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "members",
+                "teamLead",
+                "teamName"
+            ],
+            "title": "Team"
+        },
+        "VerifierUser": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "login": {
+                    "type": "string"
+                },
+                "avatarUrl": {
+                    "type": "string"
+                },
+                "userExperience": {
+                    "$ref": "#/definitions/UserExperience"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "avatarUrl",
+                "id",
+                "login",
+                "userExperience"
+            ],
+            "title": "VerifierUser"
+        },
+        "UserExperience": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "level": {
+                    "$ref": "#/definitions/Level"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "level"
+            ],
+            "title": "UserExperience"
+        },
+        "Level": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "range": {
+                    "$ref": "#/definitions/Range"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "range"
+            ],
+            "title": "Level"
+        },
+        "Range": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "levelCode": {
+                    "type": "integer"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "levelCode"
+            ],
+            "title": "Range"
+        },
+        "VerifiableStudent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/VerifierUser"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "user"
+            ],
+            "title": "VerifiableStudent"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
+
+### createFilledChecklist
+
+<details>
+<summary> Query </summary>
+
+```
+mutation createFilledChecklist($studentAnswerId: ID!) {
+  student {
+    createFilledChecklist(studentAnswerId: $studentAnswerId) {
+      id
+      gitlabStudentProjectUrl {
+        sshLink
+        httpsLink
+        __typename
+      }
+      checklist {
+        ...FormChecklist
+        __typename
+      }
+      moduleInfoP2P {
+        ...FilledChecklistModuleInfo
+        __typename
+      }
+      progressCheckInfo {
+        reviewUserCount
+        reviewUserCountExecuted
+        __typename
+      }
+      verifiableUsers {
+        teamWithMembers {
+          team {
+            id
+            name
+            __typename
+          }
+          members {
+            ...TeamMember
+            __typename
+          }
+          __typename
+        }
+        user {
+          ...TeamMemberUser
+          __typename
+        }
+        __typename
+      }
+      video {
+        filledChecklistId
+        link
+        status
+        statusDetails
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment FormChecklist on Checklist {
+  language
+  introduction
+  guidelines
+  sectionList {
+    ...FormChecklistSection
+    __typename
+  }
+  quickActions
+  __typename
+}
+
+fragment FormChecklistSection on ChecklistSection {
+  checklistSectionId
+  name
+  description
+  kindQuestionId
+  questionList {
+    ...FormChecklistQuestion
+    __typename
+  }
+  __typename
+}
+
+fragment FormChecklistQuestion on SectionQuestion {
+  sectionQuestionId
+  name
+  description
+  taskAssessmentScale {
+    criterionScaleId
+    type
+    description
+    scaleWeights {
+      key
+      value
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+
+fragment FilledChecklistModuleInfo on ModuleInfoP2P {
+  moduleName
+  executionType
+  periodOfVerification
+  __typename
+}
+
+fragment TeamMember on TeamMember {
+  user {
+    ...TeamMemberUser
+    __typename
+  }
+  role
+  __typename
+}
+
+fragment TeamMemberUser on User {
+  id
+  avatarUrl
+  login
+  userExperience {
+    level {
+      id
+      levelCode
+      range {
+        levelCode
+        __typename
+      }
+      __typename
+    }
+    cookiesCount
+    codeReviewPoints
+    __typename
+  }
+  __typename
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "studentAnswerId": {
+                    "type": "string",
+                    "format": "integer"
+                }
+            },
+            "required": [
+                "studentAnswerId"
+            ],
+            "title": "Variables"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "student": {
+                    "$ref": "#/definitions/Student"
+                }
+            },
+            "required": [
+                "student"
+            ],
+            "title": "Data"
+        },
+        "Student": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "createFilledChecklist": {
+                    "$ref": "#/definitions/CreateFilledChecklist"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "createFilledChecklist"
+            ],
+            "title": "Student"
+        },
+        "CreateFilledChecklist": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "gitlabStudentProjectUrl": {
+                    "$ref": "#/definitions/GitlabStudentProjectURL"
+                },
+                "checklist": {
+                    "$ref": "#/definitions/Checklist"
+                },
+                "moduleInfoP2P": {
+                    "$ref": "#/definitions/ModuleInfoP2P"
+                },
+                "progressCheckInfo": {
+                    "$ref": "#/definitions/ProgressCheckInfo"
+                },
+                "verifiableUsers": {
+                    "$ref": "#/definitions/VerifiableUsers"
+                },
+                "video": {
+                    "type": "null"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "checklist",
+                "gitlabStudentProjectUrl",
+                "id",
+                "moduleInfoP2P",
+                "progressCheckInfo",
+                "verifiableUsers",
+                "video"
+            ],
+            "title": "CreateFilledChecklist"
+        },
+        "Checklist": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "language": {
+                    "type": "string"
+                },
+                "introduction": {
+                    "type": "string"
+                },
+                "guidelines": {
+                    "type": "string"
+                },
+                "sectionList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SectionList"
+                    }
+                },
+                "quickActions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "guidelines",
+                "introduction",
+                "language",
+                "quickActions",
+                "sectionList"
+            ],
+            "title": "Checklist"
+        },
+        "SectionList": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "checklistSectionId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "kindQuestionId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "questionList": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/QuestionList"
+                    }
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "checklistSectionId",
+                "description",
+                "kindQuestionId",
+                "name",
+                "questionList"
+            ],
+            "title": "SectionList"
+        },
+        "QuestionList": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "sectionQuestionId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "taskAssessmentScale": {
+                    "$ref": "#/definitions/TaskAssessmentScale"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "description",
+                "name",
+                "sectionQuestionId",
+                "taskAssessmentScale"
+            ],
+            "title": "QuestionList"
+        },
+        "TaskAssessmentScale": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "criterionScaleId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "scaleWeights": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ScaleWeight"
+                    }
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "criterionScaleId",
+                "description",
+                "scaleWeights",
+                "type"
+            ],
+            "title": "TaskAssessmentScale"
+        },
+        "ScaleWeight": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "value": {
+                    "type": "string"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "key",
+                "value"
+            ],
+            "title": "ScaleWeight"
+        },
+        "GitlabStudentProjectURL": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "sshLink": {
+                    "type": "string"
+                },
+                "httpsLink": {
+                    "type": "string",
+                    "format": "uri",
+                    "qt-uri-protocols": [
+                        "https"
+                    ],
+                    "qt-uri-extensions": [
+                        ".git"
+                    ]
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "httpsLink",
+                "sshLink"
+            ],
+            "title": "GitlabStudentProjectURL"
+        },
+        "ModuleInfoP2P": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "moduleName": {
+                    "type": "string"
+                },
+                "executionType": {
+                    "type": "string"
+                },
+                "periodOfVerification": {
+                    "type": "integer"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "executionType",
+                "moduleName",
+                "periodOfVerification"
+            ],
+            "title": "ModuleInfoP2P"
+        },
+        "ProgressCheckInfo": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "reviewUserCount": {
+                    "type": "integer"
+                },
+                "reviewUserCountExecuted": {
+                    "type": "integer"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "reviewUserCount",
+                "reviewUserCountExecuted"
+            ],
+            "title": "ProgressCheckInfo"
+        },
+        "VerifiableUsers": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "teamWithMembers": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/TeamWithMembers"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "user": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/User"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "teamWithMembers",
+                "user"
+            ],
+            "title": "VerifiableUsers"
+        },
+        "TeamWithMembers": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "team": {
+                    "$ref": "#/definitions/Team"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Member"
+                    }
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "members",
+                "team"
+            ],
+            "title": "TeamWithMembers"
+        },
+        "Member": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/User"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "role",
+                "user"
+            ],
+            "title": "Member"
+        },
+        "UserExperience": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "level": {
+                    "$ref": "#/definitions/Level"
+                },
+                "cookiesCount": {
+                    "type": "integer"
+                },
+                "codeReviewPoints": {
+                    "type": "integer"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "codeReviewPoints",
+                "cookiesCount",
+                "level"
+            ],
+            "title": "UserExperience"
+        },
+        "Level": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "levelCode": {
+                    "type": "integer"
+                },
+                "range": {
+                    "$ref": "#/definitions/Range"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "id",
+                "levelCode",
+                "range"
+            ],
+            "title": "Level"
+        },
+        "Range": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "levelCode": {
+                    "type": "integer"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "levelCode"
+            ],
+            "title": "Range"
+        },
+        "Team": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "id",
+                "name"
+            ],
+            "title": "Team"
+        },
+        "User": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "avatarUrl": {
+                    "type": "string"
+                },
+                "login": {
+                    "type": "string"
+                },
+                "userExperience": {
+                    "$ref": "#/definitions/UserExperience"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "avatarUrl",
+                "id",
+                "login",
+                "userExperience"
+            ],
+            "title": "User"
         }
     }
 }
@@ -10108,6 +7828,146 @@ mutation readUserNotifications($notificationIds: [ID!]!) {
             "required": [
                 "__typename",
                 "readNotifications"
+            ],
+            "title": "Student"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
+
+### saveFilledChecklist
+
+<details>
+<summary> Query </summary>
+
+```
+mutation saveFilledChecklist($filledChecklistInput: ChecklistFilledInput!) {
+  student {
+    completeP2pCheck(checklistFilledInput: $filledChecklistInput)
+    __typename
+  }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "filledChecklistInput": {
+                    "$ref": "#/definitions/FilledChecklistInput"
+                }
+            },
+            "required": [
+                "filledChecklistInput"
+            ],
+            "title": "Variables"
+        },
+        "FilledChecklistInput": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "quickAction": {
+                    "type": "null"
+                },
+                "comment": {
+                    "type": "string"
+                },
+                "scoreQuestions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ScoreQuestion"
+                    }
+                },
+                "filledChecklistId": {
+                    "type": "string",
+                    "format": "integer"
+                }
+            },
+            "required": [
+                "comment",
+                "filledChecklistId",
+                "quickAction",
+                "scoreQuestions"
+            ],
+            "title": "FilledChecklistInput"
+        },
+        "ScoreQuestion": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "sectionQuestionId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "ratingWeightId": {
+                    "type": "string",
+                    "format": "integer"
+                }
+            },
+            "required": [
+                "ratingWeightId",
+                "sectionQuestionId"
+            ],
+            "title": "ScoreQuestion"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "student": {
+                    "$ref": "#/definitions/Student"
+                }
+            },
+            "required": [
+                "student"
+            ],
+            "title": "Data"
+        },
+        "Student": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "completeP2pCheck": {
+                    "type": "integer"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "completeP2pCheck"
             ],
             "title": "Student"
         }
@@ -21588,6 +19448,2066 @@ fragment CalendarExam on Exam {
                 "getExams"
             ],
             "title": "Student"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
+
+### userGetTheme
+
+<details>
+<summary> Query </summary>
+
+```
+query userGetTheme($userId: UUID!) {
+  user {
+    getUserViewSettings(userId: $userId) {
+      isDarkThemeEnabled
+      __typename
+    }
+    __typename
+  }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "userId": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+            },
+            "required": [
+                "userId"
+            ],
+            "title": "Variables"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "user": {
+                    "$ref": "#/definitions/User"
+                }
+            },
+            "required": [
+                "user"
+            ],
+            "title": "Data"
+        },
+        "User": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "getUserViewSettings": {
+                    "$ref": "#/definitions/GetUserViewSettings"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "getUserViewSettings"
+            ],
+            "title": "User"
+        },
+        "GetUserViewSettings": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "isDarkThemeEnabled": {
+                    "type": "boolean"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "isDarkThemeEnabled"
+            ],
+            "title": "GetUserViewSettings"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
+
+### getAllInCompletedStudentFeedbackPopup
+
+<details>
+<summary> Query </summary>
+
+```
+query getAllInCompletedStudentFeedbackPopup {
+  sc21StudentTaskCheck {
+    getAllInCompletedStudentFeedbackPopup {
+      studentFeedbackId
+      goalName
+      resultAttemptDate
+      __typename
+    }
+    __typename
+  }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Variables"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "sc21StudentTaskCheck": {
+                    "$ref": "#/definitions/Sc21StudentTaskCheck"
+                }
+            },
+            "required": [
+                "sc21StudentTaskCheck"
+            ],
+            "title": "Data"
+        },
+        "Sc21StudentTaskCheck": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "getAllInCompletedStudentFeedbackPopup": {
+                    "type": "array",
+                    "items": {}
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "getAllInCompletedStudentFeedbackPopup"
+            ],
+            "title": "Sc21StudentTaskCheck"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
+
+### getIsHonorRatingNeeded
+
+<details>
+<summary> Query </summary>
+
+```
+query getIsHonorRatingNeeded {
+  honorRating {
+    isHonorRatingNeeded
+    __typename
+  }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Variables"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "honorRating": {
+                    "$ref": "#/definitions/HonorRating"
+                }
+            },
+            "required": [
+                "honorRating"
+            ],
+            "title": "Data"
+        },
+        "HonorRating": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "isHonorRatingNeeded": {
+                    "type": "boolean"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "isHonorRatingNeeded"
+            ],
+            "title": "HonorRating"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
+
+### getSearchHistory
+
+<details>
+<summary> Query </summary>
+
+```
+query getSearchHistory {
+  globalSearch {
+    getSearchHistoryTooltips {
+      tooltipText
+      tooltipCategory
+      __typename
+    }
+    __typename
+  }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Variables"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "globalSearch": {
+                    "$ref": "#/definitions/GlobalSearch"
+                }
+            },
+            "required": [
+                "globalSearch"
+            ],
+            "title": "Data"
+        },
+        "GlobalSearch": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "getSearchHistoryTooltips": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GetSearchHistoryTooltip"
+                    }
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "getSearchHistoryTooltips"
+            ],
+            "title": "GlobalSearch"
+        },
+        "GetSearchHistoryTooltip": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "tooltipText": {
+                    "type": "string"
+                },
+                "tooltipCategory": {
+                    "type": "string"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "tooltipCategory",
+                "tooltipText"
+            ],
+            "title": "GetSearchHistoryTooltip"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
+
+### getUpcomingEvents
+
+<details>
+<summary> Query </summary>
+
+```
+query getUpcomingEvents($eventCodes: [String!]!, $registrationAccessStatusFilter: RegistartionStatusEnum, $page: PagingInput) {
+  calendarEventS21 {
+    getUpcomingEventsForRegistration(
+      eventCodes: $eventCodes
+      registrationAccessStatusFilter: $registrationAccessStatusFilter
+      page: $page
+    ) {
+      ...UpcomingEvent
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment UpcomingEvent on CalendarEvent {
+  id
+  start
+  end
+  bookings {
+    id
+    task {
+      id
+      goalName
+      __typename
+    }
+    __typename
+  }
+  eventSlots {
+    id
+    eventId
+    type
+    start
+    end
+    __typename
+  }
+  maxStudentCount
+  location
+  ipRange
+  eventType
+  eventCode
+  description
+  externalId
+  currentStudentsCount
+  exam {
+    examId
+    eventId
+    beginDate
+    endDate
+    location
+    ip
+    maxStudentCount
+    isVisible
+    name
+    goalId
+    isWaitListActive
+    isInWaitList
+    currentStudentsCount
+    createDate
+    updateDate
+    schoolId
+    stopRegisterDate
+    isRegistered
+    goalName
+    eventType
+    registrationAccessStatus
+    __typename
+  }
+  studentCodeReview {
+    studentGoalId
+    __typename
+  }
+  activity {
+    activityEventId
+    eventId
+    beginDate
+    endDate
+    location
+    description
+    maxStudentCount
+    isVisible
+    name
+    isWaitListActive
+    isInWaitList
+    currentStudentsCount
+    createDate
+    updateDate
+    schoolId
+    stopRegisterDate
+    isRegistered
+    activityType
+    eventType
+    isMandatory
+    status
+    organizers {
+      id
+      login
+      __typename
+    }
+    __typename
+  }
+  penalty {
+    ...Penalty
+    __typename
+  }
+  __typename
+}
+
+fragment Penalty on Penalty {
+  comment
+  id
+  duration
+  status
+  startTime
+  createTime
+  penaltySlot {
+    currentStudentsCount
+    description
+    duration
+    startTime
+    id
+    endTime
+    __typename
+  }
+  reasonId
+  __typename
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "eventCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "registrationAccessStatusFilter": {
+                    "type": "string"
+                },
+                "page": {
+                    "$ref": "#/definitions/Page"
+                }
+            },
+            "required": [
+                "eventCodes",
+                "page",
+                "registrationAccessStatusFilter"
+            ],
+            "title": "Variables"
+        },
+        "Page": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "limit",
+                "offset"
+            ],
+            "title": "Page"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "calendarEventS21": {
+                    "$ref": "#/definitions/CalendarEventS21"
+                }
+            },
+            "required": [
+                "calendarEventS21"
+            ],
+            "title": "Data"
+        },
+        "CalendarEventS21": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "getUpcomingEventsForRegistration": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GetUpcomingEventsForRegistration"
+                    }
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "getUpcomingEventsForRegistration"
+            ],
+            "title": "CalendarEventS21"
+        },
+        "GetUpcomingEventsForRegistration": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "start": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "end": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "bookings": {
+                    "type": "array",
+                    "items": {}
+                },
+                "eventSlots": {
+                    "type": "array",
+                    "items": {}
+                },
+                "maxStudentCount": {
+                    "type": "integer"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "ipRange": {
+                    "type": "string"
+                },
+                "eventType": {
+                    "type": "string"
+                },
+                "eventCode": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "externalId": {
+                    "type": "integer"
+                },
+                "currentStudentsCount": {
+                    "type": "integer"
+                },
+                "exam": {
+                    "type": "null"
+                },
+                "studentCodeReview": {
+                    "type": "null"
+                },
+                "activity": {
+                    "$ref": "#/definitions/Activity"
+                },
+                "penalty": {
+                    "type": "null"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "activity",
+                "bookings",
+                "currentStudentsCount",
+                "description",
+                "end",
+                "eventCode",
+                "eventSlots",
+                "eventType",
+                "exam",
+                "externalId",
+                "id",
+                "ipRange",
+                "location",
+                "maxStudentCount",
+                "penalty",
+                "start",
+                "studentCodeReview"
+            ],
+            "title": "GetUpcomingEventsForRegistration"
+        },
+        "Activity": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "activityEventId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "eventId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "beginDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "endDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "maxStudentCount": {
+                    "type": "integer"
+                },
+                "isVisible": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "isWaitListActive": {
+                    "type": "boolean"
+                },
+                "isInWaitList": {
+                    "type": "boolean"
+                },
+                "currentStudentsCount": {
+                    "type": "integer"
+                },
+                "createDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updateDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "schoolId": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "stopRegisterDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "isRegistered": {
+                    "type": "boolean"
+                },
+                "activityType": {
+                    "type": "string"
+                },
+                "eventType": {
+                    "type": "string"
+                },
+                "isMandatory": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "organizers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Organizer"
+                    }
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "activityEventId",
+                "activityType",
+                "beginDate",
+                "createDate",
+                "currentStudentsCount",
+                "description",
+                "endDate",
+                "eventId",
+                "eventType",
+                "isInWaitList",
+                "isMandatory",
+                "isRegistered",
+                "isVisible",
+                "isWaitListActive",
+                "location",
+                "maxStudentCount",
+                "name",
+                "organizers",
+                "schoolId",
+                "status",
+                "stopRegisterDate",
+                "updateDate"
+            ],
+            "title": "Activity"
+        },
+        "Organizer": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "login": {
+                    "type": "string"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "id",
+                "login"
+            ],
+            "title": "Organizer"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
+
+### getAgendaEvents
+
+<details>
+<summary> Query </summary>
+
+```
+query getAgendaEvents($from: DateTime!, $to: DateTime!, $limit: Int!) {
+  calendarEventS21 {
+    getMyAgendaEvents(from: $from, to: $to, limit: $limit) {
+      agendaItemContext {
+        entityId
+        entityType
+        __typename
+      }
+      start
+      end
+      label
+      description
+      agendaEventType
+      additionalInfo {
+        key
+        value
+        __typename
+      }
+      __typename
+    }
+    __typename
+  }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "from": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "to": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "limit": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "from",
+                "limit",
+                "to"
+            ],
+            "title": "Variables"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "calendarEventS21": {
+                    "$ref": "#/definitions/CalendarEventS21"
+                }
+            },
+            "required": [
+                "calendarEventS21"
+            ],
+            "title": "Data"
+        },
+        "CalendarEventS21": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "getMyAgendaEvents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GetMyAgendaEvent"
+                    }
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "getMyAgendaEvents"
+            ],
+            "title": "CalendarEventS21"
+        },
+        "GetMyAgendaEvent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "agendaItemContext": {
+                    "$ref": "#/definitions/AgendaItemContext"
+                },
+                "start": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "end": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "agendaEventType": {
+                    "type": "string"
+                },
+                "additionalInfo": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AdditionalInfo"
+                    }
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "additionalInfo",
+                "agendaEventType",
+                "agendaItemContext",
+                "description",
+                "end",
+                "label",
+                "start"
+            ],
+            "title": "GetMyAgendaEvent"
+        },
+        "AdditionalInfo": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string",
+                    "format": "boolean"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "key",
+                "value"
+            ],
+            "title": "AdditionalInfo"
+        },
+        "AgendaItemContext": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "entityId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "entityType": {
+                    "type": "string"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "entityId",
+                "entityType"
+            ],
+            "title": "AgendaItemContext"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
+
+### getStudentStageGroupS21
+
+<details>
+<summary> Query </summary>
+
+```
+query getStudentStageGroupS21($studentId: UUID!) {
+  school21 {
+    getStageGroupS21PublicProfile(studentId: $studentId) {
+      waveId
+      waveName
+      eduForm
+      __typename
+    }
+    __typename
+  }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "studentId": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+            },
+            "required": [
+                "studentId"
+            ],
+            "title": "Variables"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "school21": {
+                    "$ref": "#/definitions/School21"
+                }
+            },
+            "required": [
+                "school21"
+            ],
+            "title": "Data"
+        },
+        "School21": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "getStageGroupS21PublicProfile": {
+                    "$ref": "#/definitions/GetStageGroupS21PublicProfile"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "getStageGroupS21PublicProfile"
+            ],
+            "title": "School21"
+        },
+        "GetStageGroupS21PublicProfile": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "waveId": {
+                    "type": "integer"
+                },
+                "waveName": {
+                    "type": "string"
+                },
+                "eduForm": {
+                    "type": "string"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "eduForm",
+                "waveId",
+                "waveName"
+            ],
+            "title": "GetStageGroupS21PublicProfile"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
+
+### calendarGetEvents
+
+<details>
+<summary> Query </summary>
+
+```
+query calendarGetEvents($from: DateTime!, $to: DateTime!) {
+  calendarEventS21 {
+    getMyCalendarEvents(from: $from, to: $to) {
+      ...CalendarEvent
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment CalendarEvent on CalendarEvent {
+  id
+  start
+  end
+  description
+  eventType
+  eventCode
+  eventSlots {
+    id
+    type
+    start
+    end
+    __typename
+  }
+  bookings {
+    ...CalendarReviewBooking
+    __typename
+  }
+  exam {
+    ...CalendarEventExam
+    __typename
+  }
+  studentCodeReview {
+    studentGoalId
+    __typename
+  }
+  activity {
+    ...CalendarEventActivity
+    studentFeedback {
+      id
+      rating
+      comment
+      __typename
+    }
+    status
+    activityType
+    isMandatory
+    isWaitListActive
+    isVisible
+    comments {
+      type
+      createTs
+      comment
+      __typename
+    }
+    organizers {
+      id
+      login
+      __typename
+    }
+    __typename
+  }
+  goals {
+    goalId
+    goalName
+    __typename
+  }
+  penalty {
+    ...Penalty
+    __typename
+  }
+  __typename
+}
+
+fragment CalendarReviewBooking on CalendarBooking {
+  id
+  answerId
+  eventSlotId
+  task {
+    id
+    goalId
+    goalName
+    studentTaskAdditionalAttributes {
+      cookiesCount
+      __typename
+    }
+    assignmentType
+    __typename
+  }
+  eventSlot {
+    id
+    start
+    end
+    event {
+      eventUserRole
+      __typename
+    }
+    __typename
+  }
+  verifierUser {
+    ...CalendarReviewUser
+    __typename
+  }
+  verifiableStudent {
+    id
+    user {
+      ...CalendarReviewUser
+      __typename
+    }
+    __typename
+  }
+  bookingStatus
+  team {
+    ...ProjectTeamMembers
+    __typename
+  }
+  isOnline
+  vcLinkUrl
+  __typename
+}
+
+fragment CalendarReviewUser on User {
+  id
+  login
+  __typename
+}
+
+fragment ProjectTeamMembers on ProjectTeamMembers {
+  id
+  teamLead {
+    ...ProjectTeamMember
+    __typename
+  }
+  members {
+    ...ProjectTeamMember
+    __typename
+  }
+  invitedUsers {
+    ...ProjectTeamMember
+    __typename
+  }
+  teamName
+  teamStatus
+  minTeamMemberCount
+  maxTeamMemberCount
+  __typename
+}
+
+fragment ProjectTeamMember on User {
+  id
+  avatarUrl
+  login
+  userExperience {
+    level {
+      id
+      range {
+        levelCode
+        __typename
+      }
+      __typename
+    }
+    cookiesCount
+    codeReviewPoints
+    __typename
+  }
+  __typename
+}
+
+fragment CalendarEventExam on Exam {
+  examId
+  eventId
+  beginDate
+  endDate
+  name
+  location
+  currentStudentsCount
+  maxStudentCount
+  updateDate
+  goalId
+  goalName
+  isWaitListActive
+  isInWaitList
+  stopRegisterDate
+  __typename
+}
+
+fragment CalendarEventActivity on ActivityEvent {
+  activityEventId
+  eventId
+  name
+  beginDate
+  endDate
+  isRegistered
+  description
+  currentStudentsCount
+  maxStudentCount
+  location
+  updateDate
+  isWaitListActive
+  isInWaitList
+  stopRegisterDate
+  __typename
+}
+
+fragment Penalty on Penalty {
+  comment
+  id
+  duration
+  status
+  startTime
+  createTime
+  penaltySlot {
+    currentStudentsCount
+    description
+    duration
+    startTime
+    id
+    endTime
+    __typename
+  }
+  reasonId
+  __typename
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "from": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "to": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            },
+            "required": [
+                "from",
+                "to"
+            ],
+            "title": "Variables"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "calendarEventS21": {
+                    "$ref": "#/definitions/CalendarEventS21"
+                }
+            },
+            "required": [
+                "calendarEventS21"
+            ],
+            "title": "Data"
+        },
+        "CalendarEventS21": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "getMyCalendarEvents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GetMyCalendarEvent"
+                    }
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "getMyCalendarEvents"
+            ],
+            "title": "CalendarEventS21"
+        },
+        "GetMyCalendarEvent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "start": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "end": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "eventType": {
+                    "type": "string"
+                },
+                "eventCode": {
+                    "type": "string"
+                },
+                "eventSlots": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EventSlot"
+                    }
+                },
+                "bookings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Booking"
+                    }
+                },
+                "exam": {
+                    "type": "null"
+                },
+                "studentCodeReview": {
+                    "type": "null"
+                },
+                "activity": {
+                    "type": "null"
+                },
+                "goals": {
+                    "type": "array",
+                    "items": {}
+                },
+                "penalty": {
+                    "type": "null"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "activity",
+                "bookings",
+                "description",
+                "end",
+                "eventCode",
+                "eventSlots",
+                "eventType",
+                "exam",
+                "goals",
+                "id",
+                "penalty",
+                "start",
+                "studentCodeReview"
+            ],
+            "title": "GetMyCalendarEvent"
+        },
+        "Booking": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "answerId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "eventSlotId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "task": {
+                    "$ref": "#/definitions/Task"
+                },
+                "eventSlot": {
+                    "$ref": "#/definitions/EventSlot"
+                },
+                "verifierUser": {
+                    "$ref": "#/definitions/User"
+                },
+                "verifiableStudent": {
+                    "$ref": "#/definitions/VerifiableStudent"
+                },
+                "bookingStatus": {
+                    "type": "string"
+                },
+                "team": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Team"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "isOnline": {
+                    "type": "boolean"
+                },
+                "vcLinkUrl": {
+                    "type": "null"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "answerId",
+                "bookingStatus",
+                "eventSlot",
+                "eventSlotId",
+                "id",
+                "isOnline",
+                "task",
+                "team",
+                "vcLinkUrl",
+                "verifiableStudent",
+                "verifierUser"
+            ],
+            "title": "Booking"
+        },
+        "Event": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "eventUserRole": {
+                    "type": "string"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "eventUserRole"
+            ],
+            "title": "Event"
+        },
+        "Task": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "goalId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "goalName": {
+                    "type": "string"
+                },
+                "studentTaskAdditionalAttributes": {
+                    "$ref": "#/definitions/StudentTaskAdditionalAttributes"
+                },
+                "assignmentType": {
+                    "type": "string"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "assignmentType",
+                "goalId",
+                "goalName",
+                "id",
+                "studentTaskAdditionalAttributes"
+            ],
+            "title": "Task"
+        },
+        "StudentTaskAdditionalAttributes": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "cookiesCount": {
+                    "type": "integer"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "cookiesCount"
+            ],
+            "title": "StudentTaskAdditionalAttributes"
+        },
+        "Team": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "teamLead": {
+                    "$ref": "#/definitions/TeamLead"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TeamLead"
+                    }
+                },
+                "invitedUsers": {
+                    "type": "array",
+                    "items": {}
+                },
+                "teamName": {
+                    "type": "string"
+                },
+                "teamStatus": {
+                    "type": "string"
+                },
+                "minTeamMemberCount": {
+                    "type": "integer"
+                },
+                "maxTeamMemberCount": {
+                    "type": "integer"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "id",
+                "invitedUsers",
+                "maxTeamMemberCount",
+                "members",
+                "minTeamMemberCount",
+                "teamLead",
+                "teamName",
+                "teamStatus"
+            ],
+            "title": "Team"
+        },
+        "TeamLead": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "avatarUrl": {
+                    "type": "string"
+                },
+                "login": {
+                    "type": "string"
+                },
+                "userExperience": {
+                    "$ref": "#/definitions/UserExperience"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "avatarUrl",
+                "id",
+                "login",
+                "userExperience"
+            ],
+            "title": "TeamLead"
+        },
+        "UserExperience": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "level": {
+                    "$ref": "#/definitions/Level"
+                },
+                "cookiesCount": {
+                    "type": "integer"
+                },
+                "codeReviewPoints": {
+                    "type": "integer"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "codeReviewPoints",
+                "cookiesCount",
+                "level"
+            ],
+            "title": "UserExperience"
+        },
+        "Level": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "range": {
+                    "$ref": "#/definitions/Range"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "id",
+                "range"
+            ],
+            "title": "Level"
+        },
+        "Range": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "levelCode": {
+                    "type": "integer"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "levelCode"
+            ],
+            "title": "Range"
+        },
+        "VerifiableStudent": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "user": {
+                    "$ref": "#/definitions/User"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "id",
+                "user"
+            ],
+            "title": "VerifiableStudent"
+        },
+        "User": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "login": {
+                    "type": "string"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "id",
+                "login"
+            ],
+            "title": "User"
+        },
+        "EventSlot": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "start": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "end": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "event": {
+                    "$ref": "#/definitions/Event"
+                },
+                "__typename": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "end",
+                "id",
+                "start"
+            ],
+            "title": "EventSlot"
+        }
+    }
+}
+
+```
+
+</details>
+
+[[Index](#index)]
+
+### getPenaltyReasons
+
+<details>
+<summary> Query </summary>
+
+```
+query getPenaltyReasons {
+  penalty {
+    getPenaltyReasons {
+      id
+      name
+      __typename
+    }
+    __typename
+  }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Variables </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Variables",
+    "definitions": {
+        "Variables": {
+            "type": "object",
+            "additionalProperties": false,
+            "title": "Variables"
+        }
+    }
+}
+
+```
+
+</details>
+
+<details>
+<summary> Data </summary>
+
+```json
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Data",
+    "definitions": {
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "penalty": {
+                    "$ref": "#/definitions/Penalty"
+                }
+            },
+            "required": [
+                "penalty"
+            ],
+            "title": "Data"
+        },
+        "Penalty": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "getPenaltyReasons": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/GetPenaltyReason"
+                    }
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "getPenaltyReasons"
+            ],
+            "title": "Penalty"
+        },
+        "GetPenaltyReason": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "__typename": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "__typename",
+                "id",
+                "name"
+            ],
+            "title": "GetPenaltyReason"
         }
     }
 }
